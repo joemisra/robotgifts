@@ -1,0 +1,51 @@
+#!/bin/zsh
+
+# Threshold in dB for "silence"
+# Anything below this is treated as silent
+SILENCE_DB="-50"
+
+echo "Scanning WAV files…"
+echo
+
+for f in **/*.wav(.N); do
+    echo "Analyzing: $f"
+
+    # Measure average RMS level in dB
+    level=$(ffmpeg -i "$f" -filter:a volumedetect -f null /dev/null 2>&1 \
+        | awk -F': ' '/mean_volume/ {print $2}' )
+
+    # Clean level (remove trailing dB)
+    level=${level% dB}
+
+    # If ffmpeg didn’t give a value, skip
+    if [[ -z "$level" ]]; then
+        echo "  ⚠️ Could not measure level, skipping."
+        continue
+    fi
+
+    # Classify audio
+    if (( $(echo "$level < $SILENCE_DB" | bc -l) )); then
+        echo "  💤 Classified as SILENT (mean $level dB)"
+    else
+        echo "  🎵 Classified as AUDIO (mean $level dB)"
+    fi
+
+    # Convert
+    out="${f%.wav}.m4a"
+    echo "  ➜ Converting to ALAC…"
+    ffmpeg -y -i "$f" -c:a alac -map_metadata 0 "$out" >/dev/null 2>&1
+
+    if [[ ! -f "$out" ]]; then
+        echo "  ❌ Conversion failed; skipping delete."
+        continue
+    fi
+
+    # Delete WAV after verifying ALAC exists
+    #echo "  🗑️ Removing original WAV"
+    #rm "$f"
+
+    echo
+done
+
+echo "Done."
+
