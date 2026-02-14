@@ -19,7 +19,7 @@ Each document must have:
 }
 ```
 
-- **warnings** (optional): `"explicit"` for graphic/explicit descriptions, `"unredacted_victim"` for victim info that should have been redacted
+- **warnings** (optional): `"explicit"` for graphic/explicit descriptions, `"unredacted_victim"` for victim info that should have been redacted, `"damning"` for clearly damning info including testimony
 - **people** (optional): Names mentioned; useful for filtering later
 
 ## Finding the Data

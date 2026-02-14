@@ -123,6 +123,11 @@
   color: #d29922;
 }
 
+.timeline-warning-damning {
+  background: rgba(163, 113, 247, 0.2);
+  color: #a371f7;
+}
+
 .timeline-loading {
   padding: 2rem;
   color: var(--text-muted, #8b949e);

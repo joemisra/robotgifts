@@ -3,7 +3,8 @@ import './Timeline.css';
 
 const WARNING_LABELS = {
   explicit: 'Explicit content',
-  unredacted_victim: 'Unredacted victim info'
+  unredacted_victim: 'Unredacted victim info',
+  damning: 'Damning info / testimony'
 };
 
 export function Timeline({ documents, allDocuments, selectedId, onSelect, yearFilter, onYearFilterChange, isLoading }) {
@@ -66,7 +67,7 @@ export function Timeline({ documents, allDocuments, selectedId, onSelect, yearFi
               <span className="timeline-item-warnings">
                 {doc.warnings.map((w) => (
                   <span key={w} className={`timeline-warning timeline-warning-${w}`} title={WARNING_LABELS[w]}>
-                    {w === 'explicit' ? '⚠' : '🔒'}
+                    {w === 'explicit' ? '⚠' : w === 'unredacted_victim' ? '🔒' : '⚖'}
                   </span>
                 ))}
               </span>

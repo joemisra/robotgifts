@@ -68,6 +68,11 @@
   color: #d29922;
 }
 
+.document-warning-damning {
+  background: rgba(163, 113, 247, 0.15);
+  color: #a371f7;
+}
+
 .document-content {
   flex: 1;
   overflow: auto;

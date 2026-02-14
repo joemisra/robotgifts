@@ -9,7 +9,7 @@
  * - Journalist compilations (some have structured data)
  * 
  * Schema: { id, date, title, summary, content, warnings[], source, people[] }
- * warnings: "explicit" | "unredacted_victim" 
+ * warnings: "explicit" | "unredacted_victim" | "damning" 
  */
 
 import fs from 'fs';
@@ -48,9 +48,11 @@ function generateDocument(i) {
   const date = randomDate(1992, 2019);
   const hasExplicit = Math.random() < 0.08;
   const hasUnredacted = Math.random() < 0.12;
+  const hasDamning = Math.random() < 0.15;
   const warnings = [];
   if (hasExplicit) warnings.push('explicit');
   if (hasUnredacted) warnings.push('unredacted_victim');
+  if (hasDamning) warnings.push('damning');
 
   const title = `${docType} — ${formatDate(date)}`;
   const summary = `${docType}. Dated ${formatDate(date)}. ${pick(SOURCES)}.`;

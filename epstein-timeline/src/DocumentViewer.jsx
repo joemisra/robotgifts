@@ -2,7 +2,8 @@ import './DocumentViewer.css';
 
 const WARNING_LABELS = {
   explicit: 'Explicit content',
-  unredacted_victim: 'Unredacted victim info'
+  unredacted_victim: 'Unredacted victim info',
+  damning: 'Damning info / testimony'
 };
 
 export function DocumentViewer({ document }) {
