@@ -1,0 +1,65 @@
+:root {
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SF Mono', monospace;
+  --text-primary: #e6edf3;
+  --text-muted: #8b949e;
+  --timeline-bg: #161b22;
+  --timeline-hover: #21262d;
+  --timeline-selected: #21262d;
+  --viewer-bg: #0d1117;
+  --border: #30363d;
+  --accent: #58a6ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--viewer-bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  height: 100%;
+}
+
+.app {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+}
+
+.app-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  text-align: center;
+}
+
+.app-error h1 {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+}
+
+.app-error p {
+  margin: 0.5rem 0;
+  color: var(--text-muted);
+}
+
+.app-error code {
+  padding: 0.2rem 0.5rem;
+  background: var(--timeline-bg);
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
