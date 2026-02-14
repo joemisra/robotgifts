@@ -12,10 +12,10 @@ Quick standalone app for identifying audio gear in a photo and suggesting practi
 
 ```bash
 cd audio-gear-photo-starter
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-python app.py
+python3 app.py
 ```
 
 Then open the Gradio URL shown in your terminal.
